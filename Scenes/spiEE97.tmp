@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://chb4fp6odkg2p"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_4c4dh"]
+[ext_resource type="PackedScene" uid="uid://cpqnlbfxoxx4n" path="res://Scenes/Pile.tscn" id="1_tgu3f"]
+[ext_resource type="Script" path="res://Scripts/AssebledPile.gd" id="2_j3oec"]
+[ext_resource type="PackedScene" uid="uid://5jv6l1o8h1b8" path="res://Scenes/SlotView.tscn" id="3_6dxe6"]
+[ext_resource type="Script" path="res://Scripts/StockSpawner.gd" id="4_yl0il"]
+[ext_resource type="Script" path="res://Scripts/Undo/game_turn_manager.gd" id="6_1bs3u"]
+
+[sub_resource type="GDScript" id="GDScript_nd4mq"]
+script/source = "extends Button
+
+func _pressed():
+	var scene = load(\"res://Scenes/UI/menu_container.tscn\").instantiate()
+	$\"../..\".get_parent().add_child(scene)
+	$\"../..\".queue_free()
+"
+
+[node name="SpiderGameContainer" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4c4dh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+script = SubResource("GDScript_nd4mq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Pile1" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_tgu3f")]
+layout_mode = 2
+startingCards = 6
+
+[node name="Pile2" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_tgu3f")]
+layout_mode = 2
+startingCards = 6
+
+[node name="Pile3" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_tgu3f")]
+layout_mode = 2
+startingCards = 6
+
+[node name="Pile4" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_tgu3f")]
+layout_mode = 2
+startingCards = 6
+
+[node name="Pile5" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_tgu3f")]
+layout_mode = 2
+startingCards = 5
+
+[node name="Pile6" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_tgu3f")]
+layout_mode = 2
+startingCards = 5
+
+[node name="Pile7" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_tgu3f")]
+layout_mode = 2
+startingCards = 5
+
+[node name="Pile8" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_tgu3f")]
+layout_mode = 2
+startingCards = 5
+
+[node name="Pile9" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_tgu3f")]
+layout_mode = 2
+startingCards = 5
+
+[node name="Pile10" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_tgu3f")]
+layout_mode = 2
+startingCards = 5
+
+[node name="AssebledPile" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(42, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = -30
+script = ExtResource("2_j3oec")
+
+[node name="SlotView" parent="MarginContainer" instance=ExtResource("3_6dxe6")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Stock" type="HBoxContainer" parent="MarginContainer/SlotView"]
+layout_mode = 1
+offset_right = 42.0
+offset_bottom = 60.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = -50
+script = ExtResource("4_yl0il")
+
+[node name="GameTurnManager" type="Node" parent="."]
+script = ExtResource("6_1bs3u")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm1ajfyd8wv45"]
+
+[ext_resource type="Script" path="res://Scripts/UI/settings_menu.gd" id="1_qp5sk"]
+
+[sub_resource type="GDScript" id="GDScript_r05xt"]
+script/source = "extends Button
+
+func _pressed():
+	var scene = load(\"res://Scenes/UI/menu_container.tscn\").instantiate()
+	$\"..\".get_parent().add_child(scene)
+	$\"..\".queue_free()
+"
+
+[node name="SettingsMenuControl" type="VBoxContainer" node_paths=PackedStringArray("back_button", "difficulty_list")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -29.0
+offset_right = 66.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qp5sk")
+back_button = NodePath("Button_Back")
+difficulty_list = NodePath("ItemList")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Сложность"
+horizontal_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 2
+auto_height = true
+item_count = 3
+item_0/text = "1 масть"
+item_1/text = "2 масти"
+item_2/text = "4 масти"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="Button_Back" type="Button" parent="."]
+layout_mode = 2
+text = "Назад"
+script = SubResource("GDScript_r05xt")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpqnlbfxoxx4n"]
+
+[ext_resource type="Script" path="res://Scripts/GameObjects/pile.gd" id="1_ojx4g"]
+[ext_resource type="Texture2D" uid="uid://lbiuf6s8d4b6" path="res://Textures/Kenney/cardsLarge_slot.png" id="1_yqk24"]
+
+[node name="Pile" type="VBoxContainer"]
+custom_minimum_size = Vector2(42, 60)
+offset_right = 42.0
+offset_bottom = 60.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = -47
+script = ExtResource("1_ojx4g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yqk24")
+centered = false
+region_enabled = true
+region_rect = Rect2(11, 2, 42, 60)

@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://cydiq6vv23vfg"]
+
+[ext_resource type="Script" path="res://Scripts/UI/menu_player_stats.gd" id="1_ew40d"]
+[ext_resource type="Texture2D" uid="uid://c07fqa30agcgi" path="res://Textures/Kenney/Icons/import.png" id="2_pkk2u"]
+
+[node name="PlayerStatsMenu" type="VBoxContainer" node_paths=PackedStringArray("player_name_edit", "player_name_edit_apply_button", "games_played_label", "games_won_label", "back_button")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("1_ew40d")
+player_name_edit = NodePath("HBoxContainer/LineEdit_PlayerName")
+player_name_edit_apply_button = NodePath("HBoxContainer/Button_Apply")
+games_played_label = NodePath("HBoxContainer2/Label_GamesPlayed")
+games_won_label = NodePath("HBoxContainer3/Label_GamesWon")
+back_button = NodePath("Button_Back")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="LineEdit_PlayerName" type="LineEdit" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+placeholder_text = "Player Name"
+alignment = 1
+max_length = 50
+
+[node name="Button_Apply" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+icon = ExtResource("2_pkk2u")
+expand_icon = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label_GamesPlayedText" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+text = "Games played:"
+
+[node name="Label_GamesPlayed" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+text = "0
+"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label_GamesWonText" type="Label" parent="HBoxContainer3"]
+layout_mode = 2
+text = "Games won:"
+
+[node name="Label_GamesWon" type="Label" parent="HBoxContainer3"]
+layout_mode = 2
+text = "0
+"
+
+[node name="Button_Back" type="Button" parent="."]
+layout_mode = 2
+text = "Назад"

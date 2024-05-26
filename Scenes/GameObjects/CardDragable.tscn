@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdu0rkngra054"]
+
+[ext_resource type="Script" path="res://Scripts/GameObjects/card_dragable.gd" id="1_ithuy"]
+[ext_resource type="SpriteFrames" uid="uid://bwxq5k60cd7ty" path="res://Textures/Kenney/cardsLarge_SpriteFrames.tres" id="2_ujaex"]
+
+[node name="CardDragable" type="Button"]
+custom_minimum_size = Vector2(42, 60)
+offset_right = 42.0
+offset_bottom = 60.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+action_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+script = ExtResource("1_ithuy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_ujaex")
+animation = &"_empty"
+speed_scale = 0.0
+centered = false

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqh83ertr4ws"]
+
+[ext_resource type="Script" path="res://Scripts/GameObjects/stock.gd" id="1_weiek"]
+[ext_resource type="SpriteFrames" uid="uid://bwxq5k60cd7ty" path="res://Textures/Kenney/cardsLarge_SpriteFrames.tres" id="2_egc2w"]
+
+[node name="Stock" type="Button"]
+custom_minimum_size = Vector2(42, 60)
+offset_right = 42.0
+offset_bottom = 60.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+script = ExtResource("1_weiek")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_egc2w")
+animation = &"back"
+speed_scale = 0.0
+centered = false

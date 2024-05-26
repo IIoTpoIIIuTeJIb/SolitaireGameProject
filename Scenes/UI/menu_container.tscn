@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://1o86maai8njl"]
+
+[ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_dc5nx"]
+[ext_resource type="PackedScene" uid="uid://chb4fp6odkg2p" path="res://Scenes/Games/spider_game_container.tscn" id="2_ylsp4"]
+[ext_resource type="PackedScene" uid="uid://cydiq6vv23vfg" path="res://Scenes/UI/menu_player_stats.tscn" id="3_ptejk"]
+[ext_resource type="PackedScene" uid="uid://cm1ajfyd8wv45" path="res://Scenes/UI/menu_settings.tscn" id="3_xupi3"]
+
+[node name="MenuContainer" type="VBoxContainer" node_paths=PackedStringArray("player_name_label", "start_button", "player_button", "settings_button", "exit_button")]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dc5nx")
+player_name_label = NodePath("Label_PlayerName")
+start_button = NodePath("Button_Start")
+player_button = NodePath("Button_Player")
+settings_button = NodePath("Button_Settings")
+exit_button = NodePath("Button_Exit")
+game_scene = ExtResource("2_ylsp4")
+player_stats_scene = ExtResource("3_ptejk")
+settings_scene = ExtResource("3_xupi3")
+
+[node name="Label_PlayerName" type="Label" parent="."]
+layout_mode = 2
+text = "Player name"
+
+[node name="Button_Start" type="Button" parent="."]
+layout_mode = 2
+text = "Начать"
+
+[node name="Button_Player" type="Button" parent="."]
+layout_mode = 2
+text = "Игрок"
+
+[node name="Button_Settings" type="Button" parent="."]
+layout_mode = 2
+text = "Настройки"
+
+[node name="Button_Exit" type="Button" parent="."]
+layout_mode = 2
+text = "Выход"

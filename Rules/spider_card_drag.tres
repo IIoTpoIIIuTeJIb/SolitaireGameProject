@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RuleCardDrag" load_steps=2 format=3 uid="uid://dh00wh6m8kyqh"]
+
+[ext_resource type="Script" path="res://Scripts/Rules/rule_card_drag.gd" id="1_vmkr5"]
+
+[resource]
+script = ExtResource("1_vmkr5")
+_can_drag_pile_suit_rule = 1
+_can_drag_pile_rank_rule = 2

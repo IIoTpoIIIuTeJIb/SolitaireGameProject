@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=3 uid="uid://chb4fp6odkg2p"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_3kwic"]
+[ext_resource type="PackedScene" uid="uid://cpqnlbfxoxx4n" path="res://Scenes/GameObjects/Pile.tscn" id="2_0a811"]
+[ext_resource type="Texture2D" uid="uid://dvnyv745uh8jn" path="res://Textures/Kenney/Icons/door.png" id="2_lruu6"]
+[ext_resource type="Texture2D" uid="uid://c7s6x12wcpqt0" path="res://Textures/Kenney/Icons/return.png" id="3_s84hd"]
+[ext_resource type="Script" path="res://Scripts/GameObjects/assebled_pile.gd" id="3_ty5ag"]
+[ext_resource type="Texture2D" uid="uid://88dvkab8fnn7" path="res://Textures/Kenney/Icons/arrowLeft.png" id="4_ejaac"]
+[ext_resource type="PackedScene" uid="uid://5jv6l1o8h1b8" path="res://Scenes/GameObjects/SlotView.tscn" id="4_vnjti"]
+[ext_resource type="Script" path="res://Scripts/GameObjects/stock_spawner.gd" id="5_qapj6"]
+[ext_resource type="Script" path="res://Scripts/Undo/game_turn_manager.gd" id="6_t152l"]
+
+[node name="SpiderGameContainer" type="HBoxContainer" node_paths=PackedStringArray("exit_button", "restart_button", "undo_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3kwic")
+exit_button = NodePath("VBoxContainer_Buttons/Button_exit")
+restart_button = NodePath("VBoxContainer_Buttons/Button_restart")
+undo_button = NodePath("VBoxContainer_Buttons/Button_undo")
+
+[node name="VBoxContainer_Buttons" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Button_exit" type="Button" parent="VBoxContainer_Buttons"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+icon = ExtResource("2_lruu6")
+expand_icon = true
+
+[node name="Button_restart" type="Button" parent="VBoxContainer_Buttons"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+icon = ExtResource("3_s84hd")
+expand_icon = true
+
+[node name="Button_undo" type="Button" parent="VBoxContainer_Buttons"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+icon = ExtResource("4_ejaac")
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="AssembledPile" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(42, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = -30
+script = ExtResource("3_ty5ag")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Pile1" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_0a811")]
+layout_mode = 2
+startingCards = 6
+
+[node name="Pile2" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_0a811")]
+layout_mode = 2
+startingCards = 6
+
+[node name="Pile3" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_0a811")]
+layout_mode = 2
+startingCards = 6
+
+[node name="Pile4" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_0a811")]
+layout_mode = 2
+startingCards = 6
+
+[node name="Pile5" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_0a811")]
+layout_mode = 2
+startingCards = 5
+
+[node name="Pile6" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_0a811")]
+layout_mode = 2
+startingCards = 5
+
+[node name="Pile7" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_0a811")]
+layout_mode = 2
+startingCards = 5
+
+[node name="Pile8" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_0a811")]
+layout_mode = 2
+startingCards = 5
+
+[node name="Pile9" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_0a811")]
+layout_mode = 2
+startingCards = 5
+
+[node name="Pile10" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_0a811")]
+layout_mode = 2
+startingCards = 5
+
+[node name="SlotView" parent="VBoxContainer/MarginContainer" instance=ExtResource("4_vnjti")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Stock" type="HBoxContainer" parent="VBoxContainer/MarginContainer/SlotView"]
+layout_mode = 1
+offset_right = 42.0
+offset_bottom = 60.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = -50
+script = ExtResource("5_qapj6")
+
+[node name="GameTurnManager" type="Node" parent="VBoxContainer"]
+script = ExtResource("6_t152l")

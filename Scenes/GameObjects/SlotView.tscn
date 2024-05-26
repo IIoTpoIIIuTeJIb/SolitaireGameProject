@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://5jv6l1o8h1b8"]
+
+[ext_resource type="Texture2D" uid="uid://lbiuf6s8d4b6" path="res://Textures/Kenney/cardsLarge_slot.png" id="1_7ie2l"]
+
+[node name="SlotView" type="Control"]
+custom_minimum_size = Vector2(42, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 42.0
+offset_bottom = 60.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7ie2l")
+centered = false
+region_enabled = true
+region_rect = Rect2(11, 2, 42, 60)
