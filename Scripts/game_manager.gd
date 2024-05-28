@@ -25,8 +25,8 @@ func _init():
 func _ready():
 	is_game_started = true
 	
-	EventBus.connect("cards_assmebled", _on_pile_assembled)
-	EventBus.connect("assembled_pile_undone", _on_assembled_pile_undone)
+	EventBus.CardsAssembled.connect(_on_pile_assembled)
+	EventBus.AssembledPileUndone.connect(_on_assembled_pile_undone)
 	GameTurnManager.instance.connect("turn_undone", _on_turn_undone)
 	InputEventHandler.connect("restart", _on_game_restart)
 	
@@ -34,7 +34,7 @@ func _ready():
 	restart_button.connect("pressed", _on_game_restart)
 	undo_button.connect("pressed", _on_undo_pressed)
 	
-	EventBus.emit_signal("game_started")
+	EventBus.GameStarted.emit()
 
 func _on_pile_assembled(_suit : Card.Suit):
 	piles_assembled = piles_assembled + 1
@@ -47,7 +47,7 @@ func _on_assembled_pile_undone():
 
 func _on_game_restart():
 	get_parent().add_child(load("res://Scenes/Games/spider_game_container.tscn").instantiate())
-	EventBus.emit_signal("game_ended", is_game_won)
+	EventBus.GameEnded.emit(is_game_won)
 	queue_free()
 
 func _on_undo_pressed():
@@ -89,7 +89,7 @@ func _create_deck():
 	deck.shuffle()
 
 func _on_exit_pressed():
-	EventBus.emit_signal("game_ended", is_game_won)
+	EventBus.GameEnded.emit(is_game_won)
 	var scene = load("res://Scenes/UI/menu_container.tscn").instantiate()
 	get_parent().add_child(scene)
 	queue_free()

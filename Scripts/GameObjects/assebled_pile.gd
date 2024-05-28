@@ -5,8 +5,8 @@ const cardResource = "res://Scenes/GameObjects/CardView.tscn"
 var card = preload(cardResource)
 
 func _ready():
-	EventBus.connect("cards_assmebled", _on_cards_assembled)
-	EventBus.connect("assembled_pile_undone", _on_assembled_pile_undone)
+	EventBus.CardsAssembled.connect(_on_cards_assembled)
+	EventBus.AssembledPileUndone.connect(_on_assembled_pile_undone)
 
 func _on_assembled_pile_undone():
 	get_children().front().queue_free()

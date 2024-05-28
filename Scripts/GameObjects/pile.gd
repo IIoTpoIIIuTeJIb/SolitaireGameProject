@@ -7,7 +7,7 @@ var cardPreload = preload(cardResource)
 @export var startingCards : int = 0
 
 func _ready():
-	EventBus.connect("cards_dealt", _on_cards_dealt)
+	EventBus.CardsDealt.connect(_on_cards_dealt)
 	for i in range(0, startingCards):
 		_instantiate_card()
 	if get_child_count() > 0:
@@ -38,7 +38,7 @@ func drop_cards(_cards, _data):
 	for command in commands:
 		GameTurnManager.instance.execute_command(command)
 		
-	EventBus.emit_signal("card_moved")
+	EventBus.CardMoved.emit()
 		
 	if _is_pile_assembled():
 		var _pile = get_assembled_pile()
@@ -98,13 +98,13 @@ func _remove_cards(_cards : Array):
 	cards.reverse()
 	var command = Command_RemovePile.new(cards, self)
 	GameTurnManager.instance.execute_command(command)
-	EventBus.emit_signal("cards_assmebled", suit)
+	EventBus.CardsAssembled.emit(Card.Suit.find_key(suit))#_signal("cards_assmebled", suit)
 
 
 func _on_cards_dealt():
 	var instance = _instantiate_card()
 	GameTurnManager.instance.execute_command(Command_InstantiateCard.new(instance))
-	EventBus.emit_signal("card_moved")
+	EventBus.CardMoved.emit()
 
 
 func _instantiate_card() -> Node:

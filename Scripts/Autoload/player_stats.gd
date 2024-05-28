@@ -10,7 +10,7 @@ signal player_data_updated
 
 func _init():
 	_load_player_data()
-	EventBus.connect("game_ended", _on_game_end)
+	EventBus.GameEnded.connect(_on_game_end)
 
 func _ready():
 	_receive_player_data()

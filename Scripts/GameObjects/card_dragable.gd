@@ -12,8 +12,8 @@ func set_isOpen(value : bool):
 	flip()
 
 func _ready():
-	EventBus.connect("game_started", _on_game_started)
-	EventBus.connect("card_moved", _on_card_moved)
+	EventBus.GameStarted.connect(_on_game_started)
+	EventBus.CardMoved.connect(_on_card_moved)
 	_pop_card_from_deck()
 
 

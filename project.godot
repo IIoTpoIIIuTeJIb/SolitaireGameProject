@@ -12,13 +12,13 @@ config_version=5
 
 config/name="CardGame"
 run/main_scene="res://Scenes/UI/menu_starting.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
+EventBus="*res://Scripts/Autoload/EventBus.cs"
 Settings="*res://Scripts/Autoload/settings.gd"
-EventBus="*res://Scripts/Autoload/event_bus.gd"
 InputEventHandler="*res://Scripts/Autoload/input_event_handler.gd"
 PlayerStats="*res://Scripts/Autoload/player_stats.gd"
 
